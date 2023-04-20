@@ -25,7 +25,14 @@ def test_success_form_send():
     browser.element('[id=react-select-4-input]').type('Delhi').press_enter()
     browser.element('[id=submit]').press_enter()
     ...
-    browser.element('.table-responsive').should(have.exact_texts('tata', 'test', 'test@test.ru', 'Female', '7999999999',
-                                          '11 May,1985', 'Computer Science, Maths', 'Reading',
-                                          'bradford.jpg', 'тестовый адрес', 'NCR', 'Delhi'))
+    browser.element('.table-responsive').all('td').should(have.texts('Student Name', 'tata test',
+                                                                     'Student Email', 'test@test.ru',
+                                                                     'Gender', 'Female',
+                                                                     'Mobile', '7999999999',
+                                                                     'Date of Birth', '11 May,1985',
+                                                                     'Subjects', 'Computer Science, Maths',
+                                                                     'Hobbies', 'Reading',
+                                                                     'Picture', 'bradford.jpg',
+                                                                     'Address', 'тестовый адрес',
+                                                                     'State and City', 'NCR Delhi'))
     ...
