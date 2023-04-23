@@ -2,8 +2,9 @@ import pytest
 from selene import browser, have
 import os
 
-def test_success_form_send():
-    browser.open('https://demoqa.com/automation-practice-form')
+
+def test_success_form_send(browser_settings):
+    browser.open('/automation-practice-form')
 
     browser.element('#firstName').type('tata')
     browser.element('#lastName').type('test')
