@@ -38,4 +38,3 @@ def test_success_form_send(browser_settings):
                                                      'Picture', 'bradford.jpg',
                                                      'Address', 'тестовый адрес',
                                                      'State and City', 'NCR Delhi'))
-    ...

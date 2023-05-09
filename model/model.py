@@ -7,9 +7,6 @@ import os
 from conftest import ROOT_DIR
 
 
-def resources_path(dir_name, file_name):
-    file_path_and_name = os.path.abspath(os.path.join(ROOT_DIR, dir_name, file_name))
-    return file_path_and_name
 @pytest.fixture(scope='session')
 def browser_settings():
     browser.config.base_url = 'https://demoqa.com'
@@ -72,7 +69,7 @@ class RegistrationForm:
             browser.element('#subjectsInput').type(subject).press_enter()
         for hobbie in UserData.hobbies:
             browser.element(f'[for = hobbies-checkbox-{hobbie}]').click()
-        browser.element('#uploadPicture').send_keys(resources_path('img', UserData.file_name))
+        browser.element('#uploadPicture').send_keys(os.path.abspath(os.path.join(ROOT_DIR, 'img', UserData.file_name)))
         browser.element('#currentAddress').type(UserData.address)
         browser.element('[id=react-select-3-input]').type(UserData.state).press_enter()
         browser.element('[id=react-select-4-input]').type(UserData.sity).press_enter()
