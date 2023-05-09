@@ -1,5 +1,5 @@
 from selene import have
-from model.model import RegistrationForm, browser_settings
+from registration_page_object.registration_page import RegistrationForm
 
 
 def test_success_form_send(browser_settings):
