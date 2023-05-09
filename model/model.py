@@ -1,6 +1,7 @@
 import os
 import pytest
 from selene import browser, have
+from definition import ROOT_DIR
 
 
 @pytest.fixture(scope='session')
@@ -43,7 +44,7 @@ class RegistrationForm:
         browser.element(f'[for = hobbies-checkbox-{value}]').click()
 
     def file_select(self, file_name):
-        browser.element('#uploadPicture').send_keys(os.getcwd() + file_name)
+        browser.element('#uploadPicture').send_keys(os.path.abspath(os.path.join(ROOT_DIR, 'img', file_name)))
 
     def user_address_fill(self, value):
         browser.element('#currentAddress').type(value)
