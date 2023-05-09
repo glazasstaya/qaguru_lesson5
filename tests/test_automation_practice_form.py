@@ -14,7 +14,7 @@ def test_success_form_send(browser_settings):
     registration_form.user_birtday('15', '5', '1985')
     registration_form.user_subject_fill('co', 'ma')
     registration_form.user_hobbies_select('2')
-    registration_form.file_select('/bradford.jpg')
+    registration_form.file_select('bradford.jpg')
     registration_form.user_address_fill('тестовый адрес')
     registration_form.user_state_and_sity_select('NCR', 'Delhi')
     registration_form.form_submit()
