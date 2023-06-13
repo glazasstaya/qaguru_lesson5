@@ -5,6 +5,8 @@ from page_objects.registration_page_object import RegistrationForm
 from data_objects.registrathion_page_data_object import Gender, Month, UserData
 from utils import attach
 from selene.support.shared import browser
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
 @pytest.fixture(scope='session')
@@ -16,6 +18,23 @@ def browser_settings():
 
 @allure.title('Success fill form')
 def test_success_form_send(browser_settings):
+    options = Options()
+    selenoid_capabilities = {
+        "browserName": "chrome",
+        "browserVersion": "100.0",
+        "selenoid:options": {
+            "enableVNC": True,
+            "enableVideo": False
+        }
+    }
+    options.capabilities.update(selenoid_capabilities)
+
+    driver = webdriver.Remote(
+        command_executor="https://user:1234@selenoid.autotests.cloud/wd/hub",
+        options=options)
+
+    browser.config.driver = driver
+
     registration_form = RegistrationForm()
 
     user = UserData(first_name='tata',
