@@ -1,7 +1,4 @@
-import pytest
 from selene import have
-import os
-from conftets import browser_settings
 from page_objects.registration_page_object import RegistrationForm
 from data_objects.registrathion_page_data_object import Gender, Month, UserData
 
