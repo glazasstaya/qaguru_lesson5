@@ -16,8 +16,8 @@ def test_success_form_send(browser_settings):
     registration_form = RegistrationForm()
 
     user = UserData(first_name='tata',
-                    last_name='test',
-                    email='test@test.ru',
+                    last_name='tests',
+                    email='tests@tests.ru',
                     gender=Gender.Female.value,
                     pnone_number='7999999999',
                     birth_day=11,
@@ -41,8 +41,8 @@ def test_success_form_send(browser_settings):
         registration_form.form_submit()
 
     with allure.step('Check result'):
-        registration_form.result_table().should(have.texts('Student Name', 'tata test',
-                                                           'Student Email', 'test@test.ru',
+        registration_form.result_table().should(have.texts('Student Name', 'tata tests',
+                                                           'Student Email', 'tests@tests.ru',
                                                            'Gender', 'Female',
                                                            'Mobile', '7999999999',
                                                            'Date of Birth', '11 June,1985',
