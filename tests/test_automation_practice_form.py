@@ -1,8 +1,11 @@
 import pytest
 import allure
-from selene import browser, have
+from selene import have
 from page_objects.registration_page_object import RegistrationForm
 from data_objects.registrathion_page_data_object import Gender, Month, UserData
+from utils import attach
+from selene.support.shared import browser
+
 
 @pytest.fixture(scope='session')
 def browser_settings():
@@ -51,3 +54,7 @@ def test_success_form_send(browser_settings):
                                                            'Picture', 'bradford.jpg',
                                                            'Address', 'тестовый адрес',
                                                            'State and City', 'NCR Delhi'))
+
+    attach.add_screenshot(browser)
+    attach.add_logs(browser)
+    attach.add_html(browser)
