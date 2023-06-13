@@ -1,0 +1,5 @@
+  .idea/
+        __pycache__/
+        data_objects/__pycache__/
+        page_objects/__pycache__/
+        tests/__pycache__/
