@@ -1,42 +1,12 @@
-import pytest
 import allure
 from selene import have
 from page_objects.registration_page_object import RegistrationForm
 from data_objects.registrathion_page_data_object import Gender, Month, UserData
-from utils import attach
-from selene.support.shared import browser
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-
-
-@pytest.fixture(scope='session')
-def browser_settings():
-    browser.config.base_url = 'https://demoqa.com'
-    browser.config.window_height = 1000
-    browser.config.window_width = 1800
 
 
 @allure.title('Success fill form')
-def test_success_form_send(browser_settings):
-    options = Options()
-    selenoid_capabilities = {
-        "browserName": "chrome",
-        "browserVersion": "100.0",
-        "selenoid:options": {
-            "enableVNC": True,
-            "enableVideo": True
-        }
-    }
-    options.capabilities.update(selenoid_capabilities)
-
-    driver = webdriver.Remote(
-        command_executor='https://user1:1234@selenoid.autotests.cloud/wd/hub',
-        options=options)
-
-    browser.config.driver = driver
-
+def test_success_form_send(browser_setup):
     registration_form = RegistrationForm()
-
     user = UserData(first_name='tata',
                     last_name='tests',
                     email='tests@tests.ru',
@@ -74,7 +44,3 @@ def test_success_form_send(browser_settings):
                                                            'Address', 'тестовый адрес',
                                                            'State and City', 'NCR Delhi'))
 
-    attach.add_screenshot(browser)
-    attach.add_logs(browser)
-    attach.add_html(browser)
-    attach.add_video(browser)
