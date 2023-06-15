@@ -34,5 +34,7 @@ def browser_setup():
     attach.add_html(browser)
     attach.add_video(browser)
 
+    browser.quit()
+
 
 
